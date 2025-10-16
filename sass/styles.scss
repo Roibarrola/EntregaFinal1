@@ -1,0 +1,204 @@
+// =======================================
+// 🎨 VARIABLES
+// =======================================
+$bordo: #7a1f1f;
+$dorado: #d4af37;
+$fondo-claro: #eccda2;
+$texto: #333;
+$fuente: 'Poppins', sans-serif;
+
+// Breakpoints
+$bp-md: 900px;
+$bp-sm: 600px;
+
+// (Opcional) Exponer como CSS vars por si querés theming dinámico
+:root {
+  --bordo: #{$bordo};
+  --dorado: #{$dorado};
+  --fondo-claro: #{$fondo-claro};
+  --texto: #{$texto};
+  --fuente-principal: #{$fuente};
+}
+
+// =======================================
+// 🧩 MIXINS
+// =======================================
+@mixin container($mw: 1200px, $px: 20px) {
+  max-width: $mw; margin: 0 auto; padding: 0 $px;
+}
+@mixin flex($justify: space-between, $align: center, $dir: row) {
+  display: flex; justify-content: $justify; align-items: $align; flex-direction: $dir;
+}
+@mixin button($bg, $fg) {
+  background-color: $bg; color: $fg;
+  padding: 12px 25px; border-radius: 6px; text-decoration: none;
+  font-weight: bold; transition: all .3s;
+}
+@mixin focus-ring($c: #ffcf40) {
+  outline: 2px solid $c; border-color: $c; background: #fffdfa;
+}
+@mixin respond($bp) {
+  @if $bp == md { @media (max-width: $bp-md) { @content; } }
+  @else if $bp == sm { @media (max-width: $bp-sm) { @content; } }
+}
+
+// =======================================
+// 🔁 PLACEHOLDERS (@extend) + ANIMACIONES
+// =======================================
+%card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.1);
+  overflow: hidden;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// =======================================
+// 🔧 BASE
+// =======================================
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: $fuente;
+  background-color: $fondo-claro;
+  color: $texto;
+  line-height: 1.6;
+}
+
+// =======================================
+// 🧭 HEADER + NAV
+// =======================================
+.header { background-color: $bordo; padding: 20px 0; }
+
+.navbar {
+  @include container(1200px, 20px);
+  @include flex(space-between, center);
+
+  h1 { color: $dorado; font-size: 1.8rem; }
+
+  .nav-links {
+    list-style: none;
+    @include flex(flex-start, center);
+    gap: 25px;
+
+    a {
+      text-decoration: none; color: #fff; font-weight: 500; transition: color .3s;
+      &:hover, &.active { color: $dorado; }
+    }
+  }
+
+  @include respond(sm) {
+    flex-direction: column;
+    .nav-links { flex-direction: column; gap: 12px; }
+  }
+}
+
+// =======================================
+// 🏠 HERO (Inicio y variantes por página)
+// =======================================
+.hero {
+  background: url('../img/hero.jpg') center/cover no-repeat;
+  color: #fff; text-align: center; padding: 120px 20px;
+
+  h2 { font-size: 2.5rem; margin-bottom: 15px; }
+  p  { font-size: 1.2rem; margin-bottom: 25px; }
+
+  .btn {
+    @include button($dorado, $bordo);
+    &:hover { background-color: $bordo; color: $dorado; }
+  }
+
+  @include respond(sm) { h2 { font-size: 2rem; } }
+}
+
+// Variante rápida para cambiar imagen desde inline-style
+.menu-hero, .nosotros-hero, .contacto-hero {
+  @extend .hero;
+}
+
+// =======================================
+// 🍽️ MENÚ (GRID)
+// =======================================
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px; padding: 50px 20px;
+  @include container(1200px, 0);
+
+  .plato {
+    @extend %card;
+    transition: transform .3s; animation: rise .45s ease both;
+
+    &:hover { transform: translateY(-5px); }
+
+    img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    h3 { color: $bordo; margin: 15px 0 5px; }
+    p  { padding: 0 15px 15px; }
+  }
+}
+
+// =======================================
+// 👩‍🍳 NOSOTROS
+// =======================================
+.nosotros {
+  text-align: center; padding: 60px 20px;
+
+  h2 { color: $bordo; font-size: 2rem; margin-bottom: 20px; }
+  .historia { max-width: 800px; margin: 0 auto 50px; }
+
+  .equipo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px; max-width: 1000px; margin: 0 auto;
+
+    article {
+      @extend %card;
+      animation: rise .5s ease both;
+
+      img { width: 60%; border-radius: 30px; margin-bottom: 10px; height: 320px; object-fit: cover; }
+      h3 { color: $bordo; margin: 8px 0; }
+    }
+  }
+}
+
+// =======================================
+// 💬 CONTACTO (form)
+// =======================================
+.contacto-form {
+  display: grid; gap: 14px; margin-top: 20px;
+
+  label { text-align: left; font-weight: 600; }
+
+  input, textarea {
+    width: 100%; padding: 12px 14px; border: 1px solid #ddd; border-radius: 8px;
+    font: inherit; background: #fff; transition: border .2s, background .2s;
+    &:focus { @include focus-ring(); }
+  }
+
+  .btn { @include button($dorado, $bordo); }
+}
+
+// =======================================
+// ⚫ FOOTER
+// =======================================
+.footer {
+  background-color: $bordo; color: #fff; text-align: center;
+  padding: 20px; font-size: .9rem;
+
+  p { margin: 5px 0; }
+}
+
+// =======================================
+// 📱 RESPONSIVE ADICIONAL
+// =======================================
+@include respond(md) {
+  .hero { padding: 90px 16px; }
+}
+@include respond(sm) {
+  .menu-grid { gap: 18px; padding: 35px 16px; }
+  .nosotros { padding: 40px 16px; }
+}

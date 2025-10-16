@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contacto | Restaurant de Sabores</title>
+  <meta name="description" content="Contactate con Restaurant de Sabores para reservas, consultas y eventos.">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="icon" href="img/favicon.png" type="image/png">
+</head>
+<body>
+  <!-- Header / Navbar -->
+  <header class="header">
+    <nav class="navbar" aria-label="Principal">
+      <h1>Restaurant de Sabores</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="menu.html">Menú</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a class="active" href="contacto.html" aria-current="page">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero/encabezado de página -->
+    <section class="hero" style="background-image: url('img/portada.jpg');">
+      <h2>Contactanos</h2>
+      <p>Reservas, eventos y consultas. ¡Te leemos!</p>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section class="nosotros" style="max-width: 720px; margin: 0 auto; padding-top: 40px;">
+      <h2>Escribinos</h2>
+      <p>Completá el formulario y te respondemos a la brevedad.</p>
+
+      <form class="contacto-form" action="#" method="post" novalidate aria-describedby="ayuda-form">
+        <div id="ayuda-form" style="margin-bottom: 1rem; font-size: .95rem;">
+          Los campos marcados con <strong>*</strong> son obligatorios.
+        </div>
+
+        <label for="nombre">Nombre completo <strong>*</strong></label>
+        <input id="nombre" name="nombre" type="text" required minlength="2" placeholder="Tu nombre" autocomplete="name" />
+
+        <label for="email">Correo electrónico <strong>*</strong></label>
+        <input id="email" name="email" type="email" required placeholder="tunombre@mail.com" autocomplete="email" />
+
+        <label for="telefono">Teléfono</label>
+        <input id="telefono" name="telefono" type="tel" placeholder="11 1234-5678" autocomplete="tel"
+               pattern="^[0-9 +()-]{7,}$" />
+
+        <label for="asunto">Asunto <strong>*</strong></label>
+        <input id="asunto" name="asunto" type="text" required placeholder="Reserva / Consulta / Evento" />
+
+        <label for="mensaje">Mensaje <strong>*</strong></label>
+        <textarea id="mensaje" name="mensaje" rows="6" required placeholder="Contanos en qué podemos ayudarte"></textarea>
+
+        <button type="submit" class="btn" aria-label="Enviar mensaje de contacto">Enviar mensaje</button>
+      </form>
+    </section>
+
+    <!-- Datos de contacto directos -->
+    <section class="nosotros" style="padding-top: 10px;">
+      <h2>También podés escribirnos</h2>
+      <p>📍 Dirección ficticia 123 — 📞 11-4466-7890</p>
+      <p>✉️ <a href="mailto:contacto@sabores.com">contacto@sabores.com</a></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>📍 Dirección ficticia 123 | 📞 11-4466-7890</p>
+    <p>&copy; 2025 Restaurant de Sabores - Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
