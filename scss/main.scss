@@ -1,0 +1,241 @@
+:root {
+  --bordo: #7a1f1f;
+  --dorado: #d4af37;
+  --fondo-claro: #eccda2;
+  --texto: #333;
+  --fuente-principal: Poppins, sans-serif;
+}
+
+.nosotros .equipo-grid article, .menu-grid .plato {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #eccda2;
+  color: #333;
+  line-height: 1.6;
+}
+
+.header {
+  background-color: #7a1f1f;
+  padding: 20px 0;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.navbar h1 {
+  color: #d4af37;
+  font-size: 1.8rem;
+}
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 25px;
+}
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.navbar .nav-links a:hover, .navbar .nav-links a.active {
+  color: #d4af37;
+}
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar .nav-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.hero, .menu-hero, .nosotros-hero, .contacto-hero {
+  background: url("../img/hero.jpg") center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 120px 20px;
+}
+.hero h2, .menu-hero h2, .nosotros-hero h2, .contacto-hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+.hero p, .menu-hero p, .nosotros-hero p, .contacto-hero p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+.hero .btn, .menu-hero .btn, .nosotros-hero .btn, .contacto-hero .btn {
+  background-color: #d4af37;
+  color: #7a1f1f;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+.hero .btn:hover, .menu-hero .btn:hover, .nosotros-hero .btn:hover, .contacto-hero .btn:hover {
+  background-color: #7a1f1f;
+  color: #d4af37;
+}
+@media (max-width: 600px) {
+  .hero h2, .menu-hero h2, .nosotros-hero h2, .contacto-hero h2 {
+    font-size: 2rem;
+  }
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0;
+}
+.menu-grid .plato {
+  transition: transform 0.3s;
+  animation: rise 0.45s ease both;
+}
+.menu-grid .plato:hover {
+  transform: translateY(-5px);
+}
+.menu-grid .plato img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+.menu-grid .plato h3 {
+  color: #7a1f1f;
+  margin: 15px 0 5px;
+}
+.menu-grid .plato p {
+  padding: 0 15px 15px;
+}
+
+.nosotros {
+  text-align: center;
+  padding: 60px 20px;
+}
+.nosotros h2 {
+  color: #7a1f1f;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.nosotros .historia {
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+.nosotros .equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.nosotros .equipo-grid article {
+  animation: rise 0.5s ease both;
+}
+.nosotros .equipo-grid article img {
+  width: 60%;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  height: 320px;
+  object-fit: cover;
+}
+.nosotros .equipo-grid article h3 {
+  color: #7a1f1f;
+  margin: 8px 0;
+}
+
+.contacto-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+.contacto-form label {
+  text-align: left;
+  font-weight: 600;
+}
+.contacto-form input, .contacto-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font: inherit;
+  background: #fff;
+  transition: border 0.2s, background 0.2s;
+}
+.contacto-form input:focus, .contacto-form textarea:focus {
+  outline: 2px solid #ffcf40;
+  border-color: #ffcf40;
+  background: #fffdfa;
+}
+.contacto-form .btn {
+  background-color: #d4af37;
+  color: #7a1f1f;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.footer {
+  background-color: #7a1f1f;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+.footer p {
+  margin: 5px 0;
+}
+
+@media (max-width: 900px) {
+  .hero, .menu-hero, .nosotros-hero, .contacto-hero {
+    padding: 90px 16px;
+  }
+}
+@media (max-width: 600px) {
+  .menu-grid {
+    gap: 18px;
+    padding: 35px 16px;
+  }
+  .nosotros {
+    padding: 40px 16px;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
